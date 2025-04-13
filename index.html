@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>para day</title>
+  <title>de mi para ti</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -24,13 +24,13 @@
 
     path {
       fill: none;
-      stroke: #c084fc;
-      stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
     .rose-path {
+      stroke: #c084fc;
+      stroke-width: 2;
       stroke-dasharray: 2000;
       stroke-dashoffset: 2000;
       animation: draw 20s ease-in-out forwards;
@@ -42,7 +42,26 @@
       transform-origin: center;
     }
 
+    .mini-path {
+      stroke: #f472b6;
+      stroke-width: 1.5;
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+      animation: drawMini 4s ease forwards;
+      animation-delay: 22s;
+    }
+
+    .mini-yellow {
+      stroke: #facc15; /* Amarillo */
+    }
+
     @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes drawMini {
       to {
         stroke-dashoffset: 0;
       }
@@ -53,12 +72,8 @@
         transform: scale(1);
       }
       50% {
-        transform: scale(1.05); /* más perceptible */
+        transform: scale(1.05);
       }
-    }
-
-    #name-path {
-      display: none;
     }
 
     text {
@@ -90,17 +105,42 @@
 <body>
 
 <svg viewBox="0 0 600 600">
+  <!-- Rosa principal -->
   <g id="rose-group">
     <path id="rose" class="rose-path" />
   </g>
 
+  <!-- Texto debajo -->
   <path id="name-path" d="M100,520 Q300,550 500,520" />
-
   <text>
     <textPath href="#name-path" startOffset="50%">
-      para ti Dayanna :)
+      para ti Dayanna
     </textPath>
   </text>
+
+  <!-- Rosas pequeñas rosas -->
+  <g class="mini-rose" transform="translate(100,100) scale(0.3)">
+    <path class="mini-path" />
+  </g>
+  <g class="mini-rose" transform="translate(450,130) scale(0.25)">
+    <path class="mini-path" />
+  </g>
+  <g class="mini-rose" transform="translate(120,400) scale(0.2)">
+    <path class="mini-path" />
+  </g>
+
+  <!-- Rosas pequeñas amarillas -->
+ <!-- Rosas pequeñas amarillas -->
+<g class="mini-rose" transform="translate(400,420) scale(0.2)">
+  <path class="mini-path mini-yellow" />
+</g>
+<g class="mini-rose" transform="translate(160,420) scale(0.2)">
+  <path class="mini-path mini-yellow" />
+</g>
+<g class="mini-rose" transform="translate(460,250) scale(0.2)">
+  <path class="mini-path mini-yellow" />
+</g>
+
 </svg>
 
 <script>
@@ -126,8 +166,15 @@
     d += ` L ${points[i][0]},${points[i][1]}`;
   }
 
+  // Asigna la forma a la rosa principal
   path.setAttribute("d", d);
 
+  // Aplica la misma forma a todas las mini rosas
+  document.querySelectorAll('.mini-path').forEach(p => {
+    p.setAttribute("d", d);
+  });
+
+  // Agrega movimiento suave cuando termine la flor principal
   setTimeout(() => {
     group.classList.add('floating');
   }, 20000);
@@ -135,3 +182,4 @@
 
 </body>
 </html>
+
