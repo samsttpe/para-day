@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>para ti</title>
+  <title>para day</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -24,7 +24,7 @@
 
     path {
       fill: none;
-      stroke: #c084fc; /* lila */
+      stroke: #c084fc;
       stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
@@ -36,20 +36,10 @@
       animation: draw 20s ease-in-out forwards;
     }
 
-    #name-path {
-      display: none;
-    }
-
-    text {
-      font-family: Arial, sans-serif;
-      font-size: 32px;
-      fill: none;
-      stroke: #c084fc; /* lila */
-      stroke-width: 1.5;
-      opacity: 0;
-      animation: fadeIn 4s ease forwards;
-      animation-delay: 20s;
-      text-anchor: middle;
+    .floating {
+      animation: float 4s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
     }
 
     @keyframes draw {
@@ -58,13 +48,37 @@
       }
     }
 
+    @keyframes float {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05); /* más perceptible */
+      }
+    }
+
+    #name-path {
+      display: none;
+    }
+
+    text {
+      font-family: Arial, sans-serif;
+      font-size: 32px;
+      fill: none;
+      stroke: #c084fc;
+      stroke-width: 1.5;
+      opacity: 0;
+      animation: fadeIn 4s ease forwards;
+      animation-delay: 20s;
+      text-anchor: middle;
+    }
+
     @keyframes fadeIn {
       to {
         opacity: 1;
       }
     }
 
-    /* 📱 Ajustes para móviles */
     @media (max-width: 500px) {
       text {
         font-size: 28px;
@@ -76,13 +90,12 @@
 <body>
 
 <svg viewBox="0 0 600 600">
-  <!-- Rosa matemática -->
-  <path id="rose" class="rose-path" />
+  <g id="rose-group">
+    <path id="rose" class="rose-path" />
+  </g>
 
-  <!-- Ruta para el texto -->
   <path id="name-path" d="M100,520 Q300,550 500,520" />
 
-  <!-- Texto animado -->
   <text>
     <textPath href="#name-path" startOffset="50%">
       para ti Dayanna :)
@@ -92,6 +105,8 @@
 
 <script>
   const path = document.getElementById("rose");
+  const group = document.getElementById("rose-group");
+
   const a = 100;
   const k = 4;
   const cx = 300, cy = 250;
@@ -112,6 +127,10 @@
   }
 
   path.setAttribute("d", d);
+
+  setTimeout(() => {
+    group.classList.add('floating');
+  }, 20000);
 </script>
 
 </body>
