@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Rosa para Dayanna</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       background-color: #111;
@@ -11,11 +12,14 @@
       align-items: center;
       height: 100vh;
       flex-direction: column;
+      margin: 0;
     }
 
     svg {
-      width: 600px;
-      height: 600px;
+      width: 90vw;
+      height: 90vw;
+      max-width: 600px;
+      max-height: 600px;
     }
 
     path {
@@ -59,6 +63,14 @@
         opacity: 1;
       }
     }
+
+    /* 📱 Ajustes para móviles */
+    @media (max-width: 500px) {
+      text {
+        font-size: 28px;
+        stroke-width: 1.2;
+      }
+    }
   </style>
 </head>
 <body>
@@ -73,7 +85,7 @@
   <!-- Texto animado -->
   <text>
     <textPath href="#name-path" startOffset="50%">
-     De mi para ti Dayanna 
+      para ti Dayanna :)
     </textPath>
   </text>
 </svg>
