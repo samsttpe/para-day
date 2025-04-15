@@ -1,158 +1,209 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🌸🌸🌸🌸</title>
+  <meta charset="UTF-8">
+  <title>Una última cosita...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #e6ccff, #f3e6ff);
+      background: linear-gradient(to bottom, #e9d5ff, #f5e9ff);
+      color: #5b21b6;
       font-family: 'Segoe UI', sans-serif;
-      overflow-x: hidden;
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
       min-height: 100vh;
+      text-align: center;
+      overflow-x: hidden;
     }
 
-    .container {
-      max-width: 90%;
-      margin: 60px auto;
-      padding: 30px 20px;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(120, 80, 150, 0.25);
-      text-align: center;
+    .card {
+      background-color: #ede9fe;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 12px #c084fc;
+      color: #4c1d95;
+      max-width: 500px;
+      width: 100%;
+      margin-bottom: 2rem;
+      animation: fadeIn 2s ease;
       position: relative;
       z-index: 1;
     }
 
+    .hidden-letter {
+      display: none;
+      margin-top: 1.5rem;
+      background-color: #f3e8ff;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px #d8b4fe;
+      color: #5b21b6;
+      animation: fadeIn 1s ease;
+    }
+
     h1 {
-      color: #7a42c2;
-      font-size: 2rem;
-      margin-bottom: 20px;
+      color: #7e22ce;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
     }
 
-    .typing-text {
+    h2 {
+      color: #9333ea;
+    }
+
+    p {
       font-size: 1.1rem;
-      color: #333;
-      line-height: 1.7;
-      white-space: pre-wrap;
-      text-align: left;
-      border-right: 2px solid #7a42c2;
-      animation: blink 1s step-end infinite;
-      min-height: 140px;
-      padding: 0 5px;
+      margin-top: 0.5rem;
+      line-height: 1.5;
     }
 
-    @keyframes blink {
-      50% { border-color: transparent; }
+    input {
+      margin-top: 1rem;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
     }
 
     button {
-      margin-top: 25px;
-      padding: 12px 25px;
-      background: #a66bbe;
-      color: white;
-      border: none;
-      border-radius: 25px;
+      margin-top: 1rem;
+      padding: 0.5rem 1.2rem;
       font-size: 1rem;
+      background-color: #c084fc;
+      border: none;
+      color: white;
+      border-radius: 8px;
       cursor: pointer;
       transition: background 0.3s ease;
-      z-index: 2;
-      position: relative;
     }
 
     button:hover {
-      background: #8e57a2;
+      background-color: #a855f7;
     }
 
-    .emoji-flower {
-      position: fixed;
-      top: 100%;
+    .error {
+      margin-top: 1rem;
+      color: #dc2626;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Emojis flotando */
+    .emoji {
+      position: absolute;
       font-size: 24px;
-      animation: floatUp 8s linear infinite;
-      opacity: 0.8;
-      z-index: 0;
+      animation: floatUp linear infinite;
+      opacity: 0.6;
+      pointer-events: none;
     }
 
     @keyframes floatUp {
       0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
+        transform: translateY(100vh) scale(1);
+        opacity: 0.6;
       }
       100% {
-        transform: translateY(-120vh) rotate(360deg);
+        transform: translateY(-10vh) scale(1.2);
         opacity: 0;
       }
     }
 
-    @media (min-width: 600px) {
-      .container {
-        max-width: 500px;
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .emoji {
+        font-size: 18px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>linda coincidencia 🌷</h1>
-    <div class="typing-text" id="messageText"></div>
-    <button onclick="replay()">Volver a leer</button>
+
+  <!-- Mensaje final -->
+  <div class="card">
+    <h1>Gracias por llegar hasta aquí 💜</h1>
+    <p>
+        Desde que comenzamos a hablar, no he dejado de disfrutar nuestras conversaciones (cuando hay:/).<br><br>
+        A veces las mejores personas llegan por accidente, y me alegra muchísimo que tú hayas sido una de esas casualidades.<br><br>
+        De verdad, me caes muy bien y siempre me sacas una sonrisa :)<br><br>
+        Pies ya sabes sueña bonito <br><br>
+        att: Samuel o el rarito.<br><br>
+        Otra cosa: espero que te haya gustado esto, y si no... pa ya no volver a hacer.<br><br>
+        jajajajajajajaja<br>ntc.
+    </p>
   </div>
 
+  <!-- Acceso a carta secreta -->
+  <div class="card">
+    <h1>¿Una última sorpresa? </h1>
+    <p>Si descubres la palabra secreta podrás ver algo más que te escribí 🥺</p>
+
+    <input type="text" id="clave" placeholder="Ingresa la clave secreta">
+    <br>
+    <button onclick="verificarClave()">Desbloquear</button>
+    <div class="error" id="errorMsg"></div>
+
+    <!-- Carta oculta -->
+    <div class="hidden-letter" id="cartaSecreta">
+      <h2>La verdad</h2>
+      <p>
+        Puede que nos conociéramos por accidente,  
+        pero cada charla contigo me hace sonreír.  
+        Me la paso muy bien hablando contigo y eso no lo cambio por nada. 
+        
+        la verdad no tengo planeado decir mucho mas, y solo recuerdo que el primer dia te 
+        queria batear y ahora me estoy enamorando poco a poco de ti.
+        
+        Eso sono algo atrevido pero solo te estoy diciendo una verdad.
+        <br><br>
+        —Con cariño, alguien que te piensa más de lo que imaginas 💭💜
+      </p>
+    </div>
+  </div>
+
+  <!-- Emojis flotando -->
   <script>
-    const message = `Desde que comenzamos a hablar, no he dejado de disfrutar nuestras conversaciones (cuando hay:/).
+    function verificarClave() {
+      const clave = document.getElementById("clave").value.trim().toLowerCase();
+      const carta = document.getElementById("cartaSecreta");
+      const error = document.getElementById("errorMsg");
 
-A veces las mejores personas llegan por accidente, y me alegra muchísimo que tú hayas sido una de esas casualidades.
-
-De verdad, me caes muy bien... y siempre me sacas una sonrisa :)
-
-Pies ya sabes sueña bonito
-
-att: Samuel o el rarito`;
-
-    const textElement = document.getElementById("messageText");
-    let i = 0;
-
-    function typeText() {
-      textElement.innerText = "";
-      i = 0;
-      function type() {
-        if (i < message.length) {
-          textElement.innerText += message.charAt(i);
-          i++;
-          setTimeout(type, 40);
-        }
+      if (clave === "paolayalejandro") {
+        carta.style.display = "block";
+        error.textContent = "";
+      } else {
+        error.textContent = "Ups... esa no es la clave correcta";
+        carta.style.display = "none";
       }
-      type();
     }
 
-    function replay() {
-      typeText();
-    }
+    // Crear emojis flotantes
+    const emojis = ["🌸", "🌺", "💮", "🌷"];
+    const cantidad = 25;
 
-    typeText();
-
-    // 🌸 Emojis flotando
-    const emojis = ["🌸", "🌺", "🌼", "💮"];
-    function createFloatingEmoji() {
+    for (let i = 0; i < cantidad; i++) {
       const emoji = document.createElement("div");
-      emoji.className = "emoji-flower";
+      emoji.classList.add("emoji");
       emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
       emoji.style.left = Math.random() * 100 + "vw";
-      emoji.style.fontSize = (Math.random() * 16 + 20) + "px";
-      emoji.style.animationDuration = (6 + Math.random() * 4) + "s";
+      emoji.style.animationDuration = (4 + Math.random() * 6) + "s";
+      emoji.style.fontSize = (18 + Math.random() * 12) + "px";
       document.body.appendChild(emoji);
-
-      setTimeout(() => emoji.remove(), 10000);
     }
-
-    setInterval(createFloatingEmoji, 600);
   </script>
+
 </body>
 </html>
