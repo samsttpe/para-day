@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Qué linda coincidencia 🌸</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #e6ccff, #f3e6ff);
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 90%;
+      margin: 60px auto;
+      padding: 30px 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(120, 80, 150, 0.25);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      color: #7a42c2;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .typing-text {
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      text-align: left;
+      border-right: 2px solid #7a42c2;
+      animation: blink 1s step-end infinite;
+      min-height: 140px;
+      padding: 0 5px;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 25px;
+      background: #a66bbe;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      z-index: 2;
+      position: relative;
+    }
+
+    button:hover {
+      background: #8e57a2;
+    }
+
+    .emoji-flower {
+      position: fixed;
+      top: 100%;
+      font-size: 24px;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media (min-width: 600px) {
+      .container {
+        max-width: 500px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>linda coincidencia 🌷</h1>
+    <div class="typing-text" id="messageText"></div>
+    <button onclick="replay()">Volver a leer</button>
+  </div>
+
+  <script>
+    const message = `Desde que comenzamos a hablar, no he dejado de disfrutar nuestras conversaciones (cuando hay:/).
+
+A veces las mejores personas llegan por accidente, y me alegra muchísimo que tú hayas sido una de esas casualidades.
+
+De verdad, me caes muy bien... y siempre me sacas una sonrisa :)
+
+Pies ya sabes sueña bonito `;
+
+    const textElement = document.getElementById("messageText");
+    let i = 0;
+
+    function typeText() {
+      textElement.innerText = "";
+      i = 0;
+      function type() {
+        if (i < message.length) {
+          textElement.innerText += message.charAt(i);
+          i++;
+          setTimeout(type, 40);
+        }
+      }
+      type();
+    }
+
+    function replay() {
+      typeText();
+    }
+
+    typeText();
+
+    // 🌸 Emojis flotando
+    const emojis = ["🌸", "🌺", "🌼", "💮"];
+    function createFloatingEmoji() {
+      const emoji = document.createElement("div");
+      emoji.className = "emoji-flower";
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.fontSize = (Math.random() * 16 + 20) + "px";
+      emoji.style.animationDuration = (6 + Math.random() * 4) + "s";
+      document.body.appendChild(emoji);
+
+      setTimeout(() => emoji.remove(), 10000);
+    }
+
+    setInterval(createFloatingEmoji, 600);
+  </script>
+</body>
+</html>
