@@ -114,31 +114,32 @@
   <path id="name-path" d="M100,520 Q300,550 500,520" />
   <text>
     <textPath href="#name-path" startOffset="50%">
-      para ti Dayanna
+      Paola Dayanna
     </textPath>
   </text>
 
-  <!-- Rosas pequeñas rosas -->
-  <g class="mini-rose" transform="translate(100,100) scale(0.3)">
-    <path class="mini-path" />
-  </g>
-  <g class="mini-rose" transform="translate(450,130) scale(0.25)">
-    <path class="mini-path" />
-  </g>
-  <g class="mini-rose" transform="translate(120,400) scale(0.2)">
-    <path class="mini-path" />
-  </g>
+  <!-- Mini rosas en todo el lienzo, colores variados -->
+  <g class="mini-rose" transform="translate(100,100) scale(0.3)"><path class="mini-path" /></g>
+  <g class="mini-rose" transform="translate(450,130) scale(0.25)"><path class="mini-path" /></g>
+  <g class="mini-rose" transform="translate(120,400) scale(0.2)"><path class="mini-path" /></g>
+  <g class="mini-rose" transform="translate(400,420) scale(0.2)"><path class="mini-path mini-yellow" /></g>
+  <g class="mini-rose" transform="translate(160,420) scale(0.2)"><path class="mini-path mini-yellow" /></g>
+  <g class="mini-rose" transform="translate(460,250) scale(0.2)"><path class="mini-path mini-yellow" /></g>
 
-  <!-- Rosas pequeñas amarillas -->
-  <g class="mini-rose" transform="translate(400,420) scale(0.2)">
-    <path class="mini-path mini-yellow" />
-  </g>
-  <g class="mini-rose" transform="translate(160,420) scale(0.2)">
-    <path class="mini-path mini-yellow" />
-  </g>
-  <g class="mini-rose" transform="translate(460,250) scale(0.2)">
-    <path class="mini-path mini-yellow" />
-  </g>
+  <!-- Nuevas mini flores en zonas vacías -->
+  <g class="mini-rose" transform="translate(80,280) scale(0.18)"><path class="mini-path" style="stroke:#f9a8d4;" /></g>
+  <g class="mini-rose" transform="translate(520,320) scale(0.2)"><path class="mini-path" style="stroke:#e879f9;" /></g>
+  <g class="mini-rose" transform="translate(230,120) scale(0.22)"><path class="mini-path" style="stroke:#fb7185;" /></g>
+  <g class="mini-rose" transform="translate(370,100) scale(0.23)"><path class="mini-path" style="stroke:#f472b6;" /></g>
+  <g class="mini-rose" transform="translate(290,420) scale(0.2)"><path class="mini-path" style="stroke:#facc15;" /></g>
+  <g class="mini-rose" transform="translate(60,180) scale(0.17)"><path class="mini-path" style="stroke:#a78bfa;" /></g>
+  <g class="mini-rose" transform="translate(500,180) scale(0.17)"><path class="mini-path" style="stroke:#fda4af;" /></g>
+  <g class="mini-rose" transform="translate(40,500) scale(0.15)"><path class="mini-path" style="stroke:#e879f9;" /></g>
+  <g class="mini-rose" transform="translate(530,60) scale(0.18)"><path class="mini-path" style="stroke:#a78bfa;" /></g>
+  <g class="mini-rose" transform="translate(60,60) scale(0.2)"><path class="mini-path" style="stroke:#f472b6;" /></g>
+  <g class="mini-rose" transform="translate(500,500) scale(0.2)"><path class="mini-path" style="stroke:#fb7185;" /></g>
+  <g class="mini-rose" transform="translate(300,60) scale(0.22)"><path class="mini-path" style="stroke:#facc15;" /></g>
+  <g class="mini-rose" transform="translate(100,500) scale(0.19)"><path class="mini-path" style="stroke:#fda4af;" /></g>
 </svg>
 
 <script>
@@ -179,10 +180,10 @@
 
   // Hacer clic en la flor principal abre otra página
   group.addEventListener("click", () => {
-    window.location.href = "final.html"; // Cambia esto si necesitas otro archivo
+    window.location.href = "final.html";
   });
 
-  group.style.cursor = "pointer"; // Cursor de manito
+  group.style.cursor = "pointer";
 </script>
 
 </body>
