@@ -10,17 +10,18 @@
       color: #f3e8ff;
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
+      overflow: hidden;
       touch-action: none;
     }
 
     h1 {
       color: #e0b3ff;
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     #scoreboard {
       font-size: 18px;
-      margin-top: 10px;
+      margin: 10px 0;
       color: #dfc4ff;
     }
 
@@ -30,6 +31,8 @@
       margin: 0 auto;
       border: 2px solid #caa9ff;
       pointer-events: none;
+      width: 100vw;
+      height: 100vh;
     }
 
     #startScreen {
@@ -37,7 +40,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 80vh;
+      height: 100vh;
     }
 
     #startButton {
@@ -55,22 +58,13 @@
     #startButton:hover {
       background-color: #c89aff;
     }
-
-    #mobile-controls {
-      display: none;
-    }
-
-    @media only screen and (max-width: 768px) {
-      canvas {
-        height: 50vh !important;
-      }
-    }
   </style>
 </head>
 <body>
   <h1>algo</h1>
+
   <div id="startScreen">
-    <p>no se ni porque hice esto jajajaja!</p>
+    <p>no se ni pporque hice esto!</p>
     <button id="startButton">Jugar</button>
   </div>
 
@@ -85,7 +79,7 @@
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
 
-    const gridSize = 20;
+    const gridSize = 40;
     let snake, food, direction, score, gameOver, unlockedMessageShown;
     let gameLoop;
     let touchStartX = 0;
@@ -103,10 +97,10 @@
       canvas.style.display = 'block';
       startScreen.style.display = 'none';
 
-      canvas.width = window.innerWidth - 40;
-      canvas.height = window.innerHeight * 0.5;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
 
-      snake = [{ x: 10, y: 10 }];
+      snake = [{ x: 5, y: 5 }];
       direction = 'right';
       score = 0;
       gameOver = false;
@@ -134,7 +128,7 @@
       ctx.fillStyle = '#d1b3ff';
       snake.forEach((segment) => {
         ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
-        ctx.font = `${gridSize}px Arial`;
+        ctx.font = `${gridSize * 0.9}px Arial`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText('🐍', segment.x * gridSize + gridSize / 2, segment.y * gridSize + gridSize / 2);
@@ -144,7 +138,7 @@
     function drawFood() {
       ctx.fillStyle = '#f7a6ff';
       ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
-      ctx.font = `${gridSize}px Arial`;
+      ctx.font = `${gridSize * 0.9}px Arial`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText('🍎', food.x * gridSize + gridSize / 2, food.y * gridSize + gridSize / 2);
@@ -237,6 +231,7 @@
       }
     });
 
+    // Controles por deslizamiento
     canvas.addEventListener('touchstart', (e) => {
       touchStartX = e.touches[0].clientX;
       touchStartY = e.touches[0].clientY;
