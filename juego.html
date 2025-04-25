@@ -2,14 +2,15 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>algo</title>
+  <title>Juego de la Serpiente 🐍</title>
   <style>
     body {
       margin: 0;
-      background: #68468a;
+      background: #2b1b3d;
       color: #f3e8ff;
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
+      touch-action: none;
     }
 
     h1 {
@@ -24,9 +25,9 @@
     }
 
     canvas {
-      background: #ad5bff;
+      background: #3a235e;
       display: none;
-      margin: 20px auto;
+      margin: 0 auto;
       border: 2px solid #caa9ff;
       pointer-events: none;
     }
@@ -57,34 +58,19 @@
 
     #mobile-controls {
       display: none;
-      position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      z-index: 10;
-      pointer-events: auto;
     }
 
-    #mobile-controls button {
-      font-size: 24px;
-      margin: 5px;
-      padding: 15px 25px;
-      background-color: #7520e4;
-      color: white;
-      border: none;
-      border-radius: 10px;
-    }
-
-    #mobile-controls button:active {
-      background-color: #b284f3;
+    @media only screen and (max-width: 768px) {
+      canvas {
+        height: 50vh !important;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>algo jajajaj</h1>
+  <h1>algo</h1>
   <div id="startScreen">
-    <p>la verdad no se porque hice esto</p>
+    <p>no se ni porque hice esto jajajaja!</p>
     <button id="startButton">Jugar</button>
   </div>
 
@@ -95,13 +81,6 @@
 
   <canvas id="gameCanvas"></canvas>
 
-  <div id="mobile-controls">
-    <button onclick="changeDirection('up')">⬆️</button><br>
-    <button onclick="changeDirection('left')">⬅️</button>
-    <button onclick="changeDirection('down')">⬇️</button>
-    <button onclick="changeDirection('right')">➡️</button>
-  </div>
-
   <script>
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
@@ -109,10 +88,11 @@
     const gridSize = 20;
     let snake, food, direction, score, gameOver, unlockedMessageShown;
     let gameLoop;
+    let touchStartX = 0;
+    let touchStartY = 0;
 
     const startButton = document.getElementById('startButton');
     const startScreen = document.getElementById('startScreen');
-    const mobileControls = document.getElementById('mobile-controls');
     const currentScoreEl = document.getElementById('currentScore');
     const highScoreEl = document.getElementById('highScore');
 
@@ -121,11 +101,10 @@
 
     function initGame() {
       canvas.style.display = 'block';
-      mobileControls.style.display = 'block';
       startScreen.style.display = 'none';
 
       canvas.width = window.innerWidth - 40;
-      canvas.height = window.innerHeight - 220;
+      canvas.height = window.innerHeight * 0.5;
 
       snake = [{ x: 10, y: 10 }];
       direction = 'right';
@@ -258,7 +237,26 @@
       }
     });
 
+    canvas.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    });
+
+    canvas.addEventListener('touchmove', (e) => {
+      const deltaX = e.touches[0].clientX - touchStartX;
+      const deltaY = e.touches[0].clientY - touchStartY;
+
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX > 20) changeDirection('right');
+        else if (deltaX < -20) changeDirection('left');
+      } else {
+        if (deltaY > 20) changeDirection('down');
+        else if (deltaY < -20) changeDirection('up');
+      }
+    });
+
     startButton.addEventListener('click', initGame);
   </script>
 </body>
 </html>
+
